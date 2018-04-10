@@ -85,15 +85,33 @@ const guitar = {
 
 HomeInventoryDatabase.music.push(guitar)
 
-console.log(HomeInventoryDatabase)
+//console.log(HomeInventoryDatabase)
 
 //save db to local storage
-const savedb = dbname => {
-localStorage.setItem("home inventory", JSON.stringify(HomeInventoryDatabase))
+const savedb = (dbname) => {
+localStorage.setItem("home inventory", JSON.stringify(dbname))
 }
 savedb(HomeInventoryDatabase)
 //load db from local storage
-const loadDb = localsoragekey => {
-    localStorage.getItem(JSON.parse(localsoragekey))
+//const loadDb = localstoragekey => {
+//    localStorage.getItem(JSON.parse(localstoragekey))
+//
+//}
 
+//loadDb(HomeInventoryDatabase)
+let myStuff = document.getElementById("myStuff")
+
+for (let i in HomeInventoryDatabase){
+    let sectElem = document.createElement("section")
+    let textNode = document.createTextNode(i)
+    console.log(i)
+    // for (let j in HomeInventoryDatabase[i]){
+    // let pElem = document.createElement("p")
+    // let paraText = document.createTextNode(HomeInventoryDatabase[i])
+
+    // pElem.appendChild(paraText)
+    // myStuff.appendChild(pElem)
+    // }
+    sectElem.appendChild(textNode)
+    myStuff.appendChild(sectElem)
 }
