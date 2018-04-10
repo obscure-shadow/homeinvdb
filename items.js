@@ -99,19 +99,37 @@ savedb(HomeInventoryDatabase)
 //}
 
 //loadDb(HomeInventoryDatabase)
-let myStuff = document.getElementById("myStuff")
+//let myStuff = document.getElementById("myStuff")
 
-for (let i in HomeInventoryDatabase){
-    let sectElem = document.createElement("section")
-    let textNode = document.createTextNode(i)
-    console.log(i)
-    // for (let j in HomeInventoryDatabase[i]){
-    // let pElem = document.createElement("p")
-    // let paraText = document.createTextNode(HomeInventoryDatabase[i])
+// tell it to look at the my-inventory id on the <article> tag
+const inventoryEl = document.querySelector("#my-inventory")
 
-    // pElem.appendChild(paraText)
-    // myStuff.appendChild(pElem)
-    // }
-    sectElem.appendChild(textNode)
-    myStuff.appendChild(sectElem)
+for (let type in HomeInventoryDatabase){
+    const currentTypeArray = HomeInventoryDatabase[type]
+    // for each is the same as a for loop
+    currentTypeArray.forEach(itemInArray => {
+        //creates section tag
+        const itemSection = document.createElement("section")
+        console.log(itemSection)
+        //create p tags
+        for (let prop in itemInArray){
+            const pComponent = document.createElement("p")
+            pComponent.textContent = itemInArray[prop]
+            itemSection.appendChild(pComponent)
+            inventoryEl.appendChild(itemSection)
+        }
+            // const nameP = document.createElement("p")
+            // nameP.textContent = itemInArray.name
+            // itemSection.appendChild(nameP)
+            
+            // const locationp = document.createElement("p")
+            // locationp.textContent = itemInArray.name
+            // itemSection.appendChild(locationp)
+            
+            // const descP = document.createElement("p")
+            // descP.textContent = itemInArray.name
+            // itemSection.appendChild(descP)
+            
+            // add sections
+    });
 }
